@@ -1,0 +1,70 @@
+{% load static %}
+
+<section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>Welcome to feed section</h6>
+          <h2>Here you can find all the recent postings</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="meetings-page" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="filters">
+                <ul>
+                  <li data-filter="*"  class="active">All Feeds</li>
+                  {% for category in categories %}
+                  
+                  <li data-filter=".{{category.category}}">{{category.category}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="row grid">
+                
+                
+                {% for feed in feeds %}
+                <div class="col-lg-4 templatemo-item-col all {{feed.category}}">
+                  <div class="meeting-item">
+                    <div class="thumb">
+                      <div class="price">
+                        <span>{{feed.category}}</span>
+                      </div>
+                      <a href="meeting-details.html"><img src="{% static 'assets/images/meeting-01.jpg'%}" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <div class="date">
+                           <h6>{{feed.created|date:"N"}}<span>{{feed.created|date:"m"}}</span></h6>
+                        </div>
+                        <a href="meeting-details.html"><h4>{{feed.title | truncatewords:4}}</h4></a>
+                       <p>{{feed.intro  | truncatewords:19}}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">1</a></li>
+                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
